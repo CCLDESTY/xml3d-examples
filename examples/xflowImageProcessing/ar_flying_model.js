@@ -265,7 +265,7 @@ function setupApp() {
             }
         }
         if (flipvideo) {
-            var data = Xflow.toImageData(flipvideo);
+            var data = Xflow.constants.toImageData(flipvideo);
             var width = data.width;
             var height = data.height;
 
