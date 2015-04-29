@@ -2,92 +2,205 @@
 var CATEGORY_LIST = {
     unknown : { name : "???" },
     basic: { name: "Basics" },
+    textures: { name: "Textures" },
     external : { name: "External References" },
     shader : { name: "Materials" },
     xflow : { name: "Xflow" },
     ar : { name: "Augmented Reality"},
     ip : {name: "Image Processing"}
-}
+};
 
 var EXAMPLE_LIST = [
 
-    {cat: "basic", name: "Assets", href: "examples/assets/assets.html",
-        info: "Demonstrates the use of assets to include 3D models in your scene."},
-    {cat: "basic", name: "Recursive Assets", href: "examples/recursiveAsset/recursive.html",
-        info: "Demonstrates the recursive embedding of assets to customize complex models."},
-    {cat: "basic", name: "Directional Light", href: "examples/directionalLight/index.html",
-        info: "Demonstrates the directional light shader."},
-    {cat: "basic", name: "Spot Light", href: "examples/spotLight/index.html",
-        info: "Demonstrates the spot light shader."},
-    {cat: "basic", name: "CSS Transforms", href: "examples/cssTransform/css-transform.html",
-        info: "Demonstrates the spot light shader."},
-    {cat: "basic", name: "Video Texture", href: "examples/video/video.html",
-        info: "Demonstrates video textures."},
-    {cat: "basic", name: "Webcam Integration", href: "examples/webcam/webcam.html",
-        info: "Demonstrates webcam as a source of a video texture."},
-    {cat: "basic", name: "Canvas Resizing", href: "examples/canvasresizing/resizing.html",
-        info: "Demonstrates dynamic canvas resizing through an attached jQuery UI widget."},
-    {cat: "basic", name: "Linestrips and Tristrips", href: "examples/strips/simple.html",
-        info: "Demonstrates the primitive types linestrips and tristrips."},
-    {cat: "basic", name: "Large Linestrips", href: "examples/strips/edf-vtk.html",
-        info: "Demonstrates a larger linestrip."},
-    {cat: "basic", name: "Script Value", href: "examples/scriptValue/scriptValue.html",
-        info: "Demonstrates efficient data update with TypedArrays and setScriptValue."},
-    {cat: "basic", name: "XML3D Architecture Poster", href: "examples/poster/index.html",
-        info: "Scene that uses a whole range of features of the XML3D architecture."},
+    {
+        cat: "basic",
+        name: "Assets",
+        href: "examples/assets/assets.html",
+        info: "Demonstrates the use of assets to include 3D models in your scene."
+    }, {
+        cat: "basic",
+        name: "Recursive Assets",
+        href: "examples/recursiveAsset/recursive.html",
+        info: "Demonstrates the recursive embedding of assets to customize complex models."
+    }, {
+        cat: "basic",
+        name: "Directional Light",
+        href: "examples/directionalLight/index.html",
+        info: "Demonstrates the directional light shader."
+    }, {
+        cat: "basic",
+        name: "Spot Light",
+        href: "examples/spotLight/index.html",
+        info: "Demonstrates the spot light shader."
+    }, {
+        cat: "basic",
+        name: "CSS Transforms",
+        href: "examples/cssTransform/css-transform.html",
+        info: "Demonstrates the spot light shader."
+    }, {
+        cat: "basic",
+        name: "Canvas Resizing",
+        href: "examples/canvasresizing/resizing.html",
+        info: "Demonstrates dynamic canvas resizing through an attached jQuery UI widget."
+    }, {
+        cat: "basic",
+        name: "Linestrips and Tristrips",
+        href: "examples/strips/simple.html",
+        info: "Demonstrates the primitive types linestrips and tristrips."
+    }, {
+        cat: "basic",
+        name: "Large Linestrips",
+        href: "examples/strips/edf-vtk.html",
+        info: "Demonstrates a larger linestrip."
+    }, {
+        cat: "basic",
+        name: "Script Value",
+        href: "examples/scriptValue/scriptValue.html",
+        info: "Demonstrates efficient data update with TypedArrays and setScriptValue."
+    }, {
+        cat: "basic",
+        name: "XML3D Architecture Poster",
+        href: "examples/poster/index.html",
+        info: "Scene that uses a whole range of features of the XML3D architecture."
+    },
 
-    {cat: "external", name: "XML3D JSON Format", href: "examples/suzanne/suzanne.html",
-        info: "Demonstrates the usage of external mesh data with XML3D JSON format."},
-    {cat: "external", name: "MeshLab Format", href: "examples/meshlab/meshlab.html",
-        info: "Demonstrates extending supported formats, here using MeshLab's JSON format"},
-    {cat: "external", name: "OpenCTM Format", href: "examples/openctm/openctm.html",
-        info: "Demonstrates extending supported formats, here using OpenCTM binary format"},
-    {cat: "external", name: "XML Format", href: "examples/externalXml/externalXml.html",
-        info: "Demonstrates the usage of external mesh data and shaders with XML files."},
 
-    {cat: "shader", name: "Candle Emissive Map", href: "examples/candle/candle.html",
-        info: "Demonstrates the usage of emmisive maps for the shading of a flame."},
-    {cat: "shader", name: "Custom Shader: Eyelight", href: "examples/eyelight/eyelight.html",
-        info: "Demonstrates the usage of custom shaders to implement an eyelight shader."},
-    {cat: "shader", name: "Shader Overrides", href: "examples/shaderOverrides/index.html",
-        info: "Demonstrates overriding of shader attributes in the mesh."},
-    {cat: "shader", name: "shade.js: Animated shader", href: "examples/shade-tv/index.html",
-        info: "Animated shader with shade.js."},
-    {cat: "shader", name: "shade.js: Wireframe Rendering", href: "examples/shade-wireframe/index.html",
-        info: "Wireframes with shade.js."},
+     {
+        cat: "textures",
+        name: "Texture Sampling",
+        href: "examples/texture-sampling/index.html",
+        info: "Options for texture filtering and wrapping."
+    }, {
+        cat: "textures",
+        name: "Video Texture",
+        href: "examples/video/video.html",
+        info: "Demonstrates video textures."
+    }, {
+        cat: "textures",
+        name: "Webcam Integration",
+        href: "examples/webcam/webcam.html",
+        info: "Demonstrates webcam as a source of a video texture."
+    },
 
-	{cat: "xflow", name: "Sequential Morphing", href: "examples/xflowSequentialMorph/xflow-morph.html",
-        info: "Demonstrates mesh morphing with Xflow"},
-    {cat: "xflow", name: "Facemorphing", href: "examples/facemorph/facemorph.html",
-        info: "Demonstrates how to declare and use custom Xflow scripts to generate mesh data."},
-    {cat: "xflow", name: "Wave Animation", href: "examples/xflowWave/xflow-wave.html",
-        info: "Demonstrates how to declare and use custom Xflow scripts to create a wave animation"},
 
-    {cat: "xflow", name: "Xflow Dataflows", href: "examples/xflowDataflow/xflow-dataflow.html",
-        info: "Demonstrates Xflow Dataflows to reuse processing graphs."},
-    {cat: "xflow", name: "Xflow Skinning", href: "examples/xflowSkin/xflow-skin.html",
-        info: "Demonstrates Xflow Skinning."},
-     {cat: "xflow", name: "Xflow Gangnam Style", href: "examples/gangnam/style.html",
-        info: "Another Xflow Skinning Demonstration - Gangnam Style!"},
+    {
+        cat: "external",
+        name: "XML3D JSON Format",
+        href: "examples/suzanne/suzanne.html",
+        info: "Demonstrates the usage of external mesh data with XML3D JSON format."
+    }, {
+        cat: "external",
+        name: "MeshLab Format",
+        href: "examples/meshlab/meshlab.html",
+        info: "Demonstrates extending supported formats, here using MeshLab's JSON format"
+    }, {
+        cat: "external",
+        name: "OpenCTM Format",
+        href: "examples/openctm/openctm.html",
+        info: "Demonstrates extending supported formats, here using OpenCTM binary format"
+    }, {
+        cat: "external",
+        name: "XML Format",
+        href: "examples/externalXml/externalXml.html",
+        info: "Demonstrates the usage of external mesh data and shaders with XML files."
+    },    {
+        cat: "shader",
+        name: "Candle Emissive Map",
+        href: "examples/candle/candle.html",
+        info: "Demonstrates the usage of emmisive maps for the shading of a flame."
+    }, {
+        cat: "shader",
+        name: "Custom Shader: Eyelight",
+        href: "examples/eyelight/eyelight.html",
+        info: "Demonstrates the usage of custom shaders to implement an eyelight shader."
+    }, {
+        cat: "shader",
+        name: "Shader Overrides",
+        href: "examples/shaderOverrides/index.html",
+        info: "Demonstrates overriding of shader attributes in the mesh."
+    }, {
+        cat: "shader",
+        name: "shade.js: Animated shader",
+        href: "examples/shade-tv/index.html",
+        info: "Animated shader with shade.js."
+    }, {
+        cat: "shader",
+        name: "shade.js: Wireframe Rendering",
+        href: "examples/shade-wireframe/index.html",
+        info: "Wireframes with shade.js."
+    },  {
+        cat: "xflow",
+        name: "Sequential Morphing",
+        href: "examples/xflowSequentialMorph/xflow-morph.html",
+        info: "Demonstrates mesh morphing with Xflow"
+    }, {
+        cat: "xflow",
+        name: "Facemorphing",
+        href: "examples/facemorph/facemorph.html",
+        info: "Demonstrates how to declare and use custom Xflow scripts to generate mesh data."
+    }, {
+        cat: "xflow",
+        name: "Wave Animation",
+        href: "examples/xflowWave/xflow-wave.html",
+        info: "Demonstrates how to declare and use custom Xflow scripts to create a wave animation"
+    },  {
+        cat: "xflow",
+        name: "Xflow Dataflows",
+        href: "examples/xflowDataflow/xflow-dataflow.html",
+        info: "Demonstrates Xflow Dataflows to reuse processing graphs."
+    }, {
+        cat: "xflow",
+        name: "Xflow Skinning",
+        href: "examples/xflowSkin/xflow-skin.html",
+        info: "Demonstrates Xflow Skinning."
+    }, {
+        cat: "xflow",
+        name: "Xflow Gangnam Style",
+        href: "examples/gangnam/style.html",
+        info: "Another Xflow Skinning Demonstration - Gangnam Style!"
+    },  {
+        cat: "ar",
+        name: "Simple AR",
+        href: "examples/xflowAR/ar_simple_no_flip.html",
+        info: "A simple augmented reality application with a teapot. Implemented with Xflow."
+    }, {
+        cat: "ar",
+        name: "Flying Teapot",
+        href: "examples/xflowAR/ar_flying_teapot.html",
+        info: "Augmented reality application with a teapot jumping between two markers."
+    },
 
-    {cat: "ar", name: "Simple AR", href: "examples/xflowAR/ar_simple_no_flip.html",
-        info: "A simple augmented reality application with a teapot. Implemented with Xflow."},
-    {cat: "ar", name: "Flying Teapot", href: "examples/xflowAR/ar_flying_teapot.html",
-        info: "Augmented reality application with a teapot jumping between two markers."},
-
-    {cat: "ip", name: "Pixel-Wise", href: "examples/xflowIP/pixel-wise.html",
-        info: "Basic, pixel-wise image processing operators"},
-    {cat: "ip", name: "Blending", href: "examples/xflowIP/blending.html",
-        info: "Basic blending image processing operators"},
-    {cat: "ip", name: "Spatial Filtering", href: "examples/xflowIP/spatial-filtering.html",
-        info: "Spatial filtering image processing operators"},
-    {cat: "ip", name: "Morphology", href: "examples/xflowIP/morphology.html",
-        info: "Morphology image processing operators"},
-    {cat: "ip", name: "Histogramm", href: "examples/xflowIP/histogramm.html",
-        info: "Histogramm image processing operators"},
-    {cat: "ip", name: "Fourier Transforms", href: "examples/xflowIP/fourier.html",
-        info: "Image processing operators in Fourier space."}
-]
+    {
+        cat: "ip",
+        name: "Pixel-Wise",
+        href: "examples/xflowIP/pixel-wise.html",
+        info: "Basic, pixel-wise image processing operators"
+    }, {
+        cat: "ip",
+        name: "Blending",
+        href: "examples/xflowIP/blending.html",
+        info: "Basic blending image processing operators"
+    }, {
+        cat: "ip",
+        name: "Spatial Filtering",
+        href: "examples/xflowIP/spatial-filtering.html",
+        info: "Spatial filtering image processing operators"
+    }, {
+        cat: "ip",
+        name: "Morphology",
+        href: "examples/xflowIP/morphology.html",
+        info: "Morphology image processing operators"
+    }, {
+        cat: "ip",
+        name: "Histogramm",
+        href: "examples/xflowIP/histogramm.html",
+        info: "Histogramm image processing operators"
+    }, {
+        cat: "ip",
+        name: "Fourier Transforms",
+        href: "examples/xflowIP/fourier.html",
+        info: "Image processing operators in Fourier space."
+    }]
 
 var CURRENT = null;
 var CURRENT_CAT = null;
