@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" media="all" href="../../style/normalize.css">
+    <link rel="stylesheet" type="text/css" media="all" href="../../style/foundation.css">
+    <link rel="stylesheet" type="text/css" media="all" href="../../style/jquery-ui.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../../style/page.css"/>
+
+    <script type="text/javascript" src="../../script/vendor/modernizr.js"></script>
+    <script type="text/javascript" src="../../script/vendor/jquery.js"></script>
+    <script type="text/javascript" src="../../script/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="../../script/foundation.min.js"></script>
+
+    <script type="text/javascript" src="../../script/page.js"></script>
+    <script type="text/javascript" src="../../script/xml3d.js"></script>
+    <script type="text/javascript" src="../../script/xml3d-camera.js"></script>
+
+    <title>XML3D Examples - Shadow Mapping</title>
+</head>
+<body>
+<div id="overall">
+    <div id="content">
+        <!--<h1>Directional Light - urn:xml3d:lightshader:directional</h1>-->
+
+        <xml3d id="xmlwindow" activeView="#view1" class="xml3d">
+
+            <!-- -------------------------Defs Begin--------------------------- --->
+            <defs id="mainDef">
+
+                <data id="mesh_Ground">
+                    <int name="index">0 1 2 0 2 3</int>
+                    <float3	name="position">-100 0 -100 100 0 -100 100 0 100 -100 0 100</float3>
+                    <float3 name="normal"> 0 1 0 0 1 0 0 1 0 0 1 0</float3>
+                    <float2 name="texcoord">0.0 0.0
+                        0.0 10
+                        10 10
+                        10 0</float2>
+                </data>
+
+
+                <material id="mat_sphere_round" script="urn:xml3d:material:phong">
+                    <float id="scene_ambient" name="ambientIntensity">0.1</float>
+                    <float3 name="diffuseColor"> 0.400000 0.200000 0.200000 </float3>
+                    <float3 name="specularColor"> 0.500000 0.500000 0.500000 </float3>
+                    <float name="shininess"> 0.2 </float>
+                </material>
+
+                <material id="mat_sphere_square" script="urn:xml3d:material:phong">
+                    <float id="scene_ambient" name="ambientIntensity">0.1</float>
+                    <float3 name="diffuseColor"> 0.400000 0.200000 0.200000 </float3>
+                    <float3 name="specularColor"> 0.500000 0.500000 0.500000 </float3>
+                    <float name="shininess"> 0.2 </float>
+                </material>
+
+                <material id="mat_car_chassis" script="urn:xml3d:material:phong">
+                    <float id="scene_ambient" name="ambientIntensity">0.1</float>
+                    <float3 name="diffuseColor"> 0.400000 0.400000 0.400000 </float3>
+                    <float3 name="specularColor"> 0.400000 0.300000 0.300000 </float3>
+                    <float name="shininess">  0.7 </float>
+                </material>
+
+
+                <material id="mat_ground" script="urn:xml3d:material:phong">
+                    <float3 name="diffuseColor">0.4 0.4 0.4</float3>
+                    <float id="scene_ambient" name="ambientIntensity">0.1</float>
+                    <texture name="diffuseTexture" wrapS="repeat" wrapT="repeat">
+                        <img src="../../resources/textures/wall.jpg"/>
+                    </texture>
+                </material>
+
+                <material id="m_street" script="urn:xml3d:material:phong">
+                    <float3 name="diffuseColor">0.800000 0.800000 0.800000</float3>
+                    <float id="scene_ambient" name="ambientIntensity">0.1</float>
+                    <float3 name="specularColor">0.500000 0.500000 0.500000</float3>
+                    <float name="shininess">0.09784735812133072</float>
+                    <float name="shininess">0.09784735812133072</float>
+                    <texture name="diffuseTexture" wrapS="repeat" wrapT="repeat">
+                    <img src="../../resources/textures/street.jpg"/>
+                    </texture>
+                </material>
+                <material id="m_wall" script="urn:xml3d:material:phong">
+                    <float3 name="diffuseColor">0.800000 0.800000 0.800000</float3>
+                    <float id="scene_ambient" name="ambientIntensity">0.1</float>
+                    <float3 name="specularColor">0.500000 0.500000 0.500000</float3>
+                    <float name="shininess">0.09784735812133072</float>
+                    <texture name="diffuseTexture" wrapS="repeat" wrapT="repeat">
+                    <img src="../../resources/textures/wall.jpg"/>
+                    </texture>
+                </material>
+                <material id="m_wall_top" script="urn:xml3d:material:phong">
+                    <float3 name="diffuseColor">0.800000 0.800000 0.800000</float3>
+                    <float id="scene_ambient" name="ambientIntensity">0.1</float>
+                    <float3 name="specularColor">0.500000 0.500000 0.500000</float3>
+                    <float name="shininess">0.09784735812133072</float>
+                    <texture name="diffuseTexture" wrapS="repeat" wrapT="repeat">
+                    <img src="../../resources/textures/wall_top.jpg"/>
+                    </texture>
+                </material>
+                <material id="m_cone" script="urn:xml3d:material:phong">
+                    <float3 name="diffuseColor">0.800000 0.120417 0.013915</float3>
+                    <float id="scene_ambient" name="ambientIntensity">0.1</float>
+                    <float3 name="specularColor">0.500000 0.500000 0.500000</float3>
+                    <float name="shininess">0.09784735812133072</float>
+                    <texture name="diffuseTexture" wrapS="repeat" wrapT="repeat">
+                    <img src="../../resources/textures/cone_diff.jpg"/>
+                    </texture>
+                </material>
+
+                <transform id="t_Wall_top" rotation="1.000000 0.000000 0.000000 0.000000" scale="1 1 1" translation="0 0 0"></transform>
+                <transform id="t_Wall" rotation="1.000000 0.000000 0.000000 0.000000" scale="1 1 1" translation="0 -0.5 0"></transform>
+                <transform id="t_Street" rotation="1.000000 0.000000 0.000000 0.000000" scale="1 1 1" translation="0 0 0"></transform>
+
+                <transform id="t_Car" rotation="1.000000 0.000000 0.000000 0.000000" scale="1 1 1" translation="0 0 0"></transform>
+                <transform id="t_Car_offset" rotation="1.000000 0.000000 0.000000 0.000000" scale="1 1 1" translation="0 0 0"></transform>
+                <transform id="t_Car_chassis" rotation="1.000000 0.000000 0.000000 0.000000" scale="1 1 1" translation="0 0 0"></transform>
+                <transform id="t_Car_chassis2" rotation="1.000000 0.000000 0.000000 0.000000" scale="1 1 1" translation="0 0 0"></transform>
+                <transform id="t_Ground" rotation="1.000000 0.000000 0.000000 0.000000" scale="1 1 1" translation="0 0 0"></transform>
+                <transform id="t_Sphere_square" rotation="1.000000 0.000000 0.000000 0.000000" scale="1 1 1" translation="0 0 0"></transform>
+                <transform id="t_Sphere_square_big" rotation="1.000000 0.000000 0.000000 0.000000" scale="1 1 1" translation="0 0 0"></transform>
+                <transform id="t_Sphere_round" rotation="1.000000 0.000000 0.000000 0.000000" scale="1 1 1" translation="0 0 0"></transform>
+                <transform id="t_scene" rotation="1.000000 0.000000 0.000000 0.000000" scale="1 1 1" translation="0 0 0"></transform>
+
+                <transform id="t_Lamp_dir" rotation="0 0 0 0" scale="1.000000 1.000000 1.000000" translation="50 5 0"></transform>
+                <transform id="t_Lamp_point1" rotation="0 0 0 0" scale="1.000000 1.000000 1.000000" translation="85 8 -82"></transform>
+                <transform id="t_Lamp_point2" rotation="0 0 0 0" scale="1.000000 1.000000 1.000000" translation="-85 8 -82"></transform>
+                <transform id="t_Lamp_spot1" rotation="0 0 0 0" scale="1.000000 1.000000 1.000000" translation="-20 7 -4"></transform>
+                <transform id="t_Lamp_spot2" rotation="0 0 0 0" scale="1.000000 1.000000 1.000000" translation="-20 7 4"></transform>
+
+
+                <transform id="t_Cone_1" rotation="1 0 0 0" scale="1.000000 1.000000 1.000000" translation="-35 0 -10"></transform>
+                <transform id="t_Cone_2" rotation="1 0 0 0" scale="1.000000 1.000000 1.000000" translation="1.5 0 -10"></transform>
+                <transform id="t_Cone_3" rotation="1 0 0 0" scale="1.000000 1.000000 1.000000" translation="34 0 -10"></transform>
+                <transform id="t_Cone_4" rotation="1 0 0 0" scale="1.000000 1.000000 1.000000" translation="-65 0 -19"></transform>
+                <transform id="t_Cone_5" rotation="1 0 0 0" scale="1.000000 1.000000 1.000000" translation="65 0 -20"></transform>
+                <transform id="t_Cone_6" rotation="1 0 0 0" scale="1.000000 1.000000 1.000000" translation="-35 0 -70"></transform>
+                <transform id="t_Cone_7" rotation="1 0 0 0" scale="1.000000 1.000000 1.000000" translation="-0.5 0 -70"></transform>
+                <transform id="t_Cone_8" rotation="0.15 1 -0.15 -1.570" scale="1.000000 1.000000 1.000000" translation="35.5 0 -70"></transform>
+                <transform id="t_Cone_9" rotation="1 0 0 0" scale="1.000000 1.000000 1.000000" translation="-65 0 -60"></transform>
+                <transform id="t_Cone_10" rotation="1 0 0 0" scale="1.000000 1.000000 1.000000" translation="64.5 0 -60"></transform>
+                <transform id="t_Cone_11" rotation="1 0 0 0" scale="1.000000 1.000000 1.000000" translation="70.5 0 -40"></transform>
+                <transform id="t_Cone_12" rotation="1 0 0 0" scale="1.000000 1.000000 1.0000000" translation="-70 0 -39.3"></transform>
+                <transform id="t_Cone_a" rotation="1 0 0 0" scale="1.000000 1.000000 1.000000" translation="85 0 -82"></transform>
+                <transform id="t_Cone_b" rotation="1 0 0 0" scale="1.000000 1.000000 1.000000" translation="-85 0 -82"></transform>
+
+                <transform id="t_cam" rotation="1 0 0  -0.5907" translation="0 95 200"></transform>
+                <transform id="t_car_cam" rotation="0 1 0 1.5707" translation="-11 6 0"></transform>
+
+                <transform id="t_scene" scale="10 10 10"></transform>
+
+            </defs>
+            <!-- -------------------------Defs End--------------------------- --->
+
+            <!-- -------------------------Scene Begin--------------------------- --->
+
+            <group id="scene" transform="#t_scene">
+
+                <group id="g_View" transform="#t_cam">
+                    <view id="view1"></view>
+                </group>
+                <!--group id="ground" material="#mat_ground" transform="#t_Ground">
+                    <mesh src="#mesh_Ground" type="triangles"/>
+                </group>
+
+                <!--group id="Sphere_round" material="#mat_sphere_round" transform="#t_Sphere_round">
+                     <mesh src="#mesh_Sphere_round" type="triangles"/>
+                </group>
+
+                <group id="Sphere_square" material="#mat_sphere_square" transform="#t_Sphere_square">
+                    <mesh src="#mesh_Sphere_square" type="triangles"/>
+                </group>
+
+                <group id="Sphere_square_big" material="#mat_sphere_square" transform="#t_Sphere_square_big">
+                    <mesh src="#mesh_Sphere_square" type="triangles"/>
+                </group-->
+
+                <group id="ground" transform="#t_Ground">
+                    <group id="Wall_top" transform="#t_Wall_top">
+                        <group material="#m_wall_top">
+                            <mesh src="assets/wall_top.xml#wall_top" type="triangles"/>
+                        </group>
+                    </group>
+                    <group id="Wall" transform="#t_Wall">
+                        <group material="#m_wall">
+                            <mesh src="assets/wall.xml#wall" type="triangles"/>
+                        </group>
+                    </group>
+                    <group id="Street" transform="#t_Street">
+                        <group material="#m_street">
+                            <mesh src="assets/ground.xml#ground" type="triangles"/>
+                        </group>
+                    </group>
+                </group>
+
+                <group id="Car" material="#mat_car_chassis" transform="#t_Car">
+                    <group id="Car_offset" material="#mat_car_chassis" transform="#t_Car_offset">
+                        <group id="Car_chassis" material="#mat_car_chassis" transform="#t_Car_chassis">
+                            <group material="#mat_car_chassis" transform="#t_Car_chassis2">
+                                <mesh src="assets/car.xml#car_chassis" type="triangles"/>
+                            </group>
+                        </group>
+
+                        <group id="g_car_cam" transform="#t_car_cam">
+                            <view id="view2"></view>
+                        </group>
+
+                        <group transform="#t_Lamp_spot1">
+                            <light id="ls_spot1" model="urn:xml3d:light:spot">
+                                <float3 name="intensity">3000 3000 3000</float3>
+                                <float3 name="attenuation">1 1 1</float3>
+                                <float3 name="direction">-1 -0.15 0</float3>
+                                <float  name="cutOffAngle">50.0</float>
+                                <float  name="beamWidth">10.0</float>
+                                <bool   name="castShadow">true</bool>
+                                <float  name="shadowBias">0.001</float>
+                            </light>
+                        </group>
+                        <group transform="#t_Lamp_spot2">
+                            <light id="ls_spot1" model="urn:xml3d:light:spot">
+                                <float3 name="intensity">3000 3000 3000</float3>
+                                <float3 name="attenuation">1 1 1</float3>
+                                <float3 name="direction">-1 -0.15 0</float3>
+                                <float  name="cutOffAngle">50.0</float>
+                                <float  name="beamWidth">10.0</float>
+                                <bool   name="castShadow">true</bool>
+                                <float  name="shadowBias">0.001</float>
+                            </light>
+                        </group>
+                    </group>
+                </group>
+                <group material="#m_cone" transform="#t_Cone_1"><mesh src="assets/cone.xml#Cone" type="triangles"/></group>
+                <group material="#m_cone" transform="#t_Cone_2"><mesh src="assets/cone.xml#Cone" type="triangles"/></group>
+                <group material="#m_cone" transform="#t_Cone_3"><mesh src="assets/cone.xml#Cone" type="triangles"/></group>
+                <group material="#m_cone" transform="#t_Cone_4"><mesh src="assets/cone.xml#Cone" type="triangles"/></group>
+                <group material="#m_cone" transform="#t_Cone_5"><mesh src="assets/cone.xml#Cone" type="triangles"/></group>
+                <group material="#m_cone" transform="#t_Cone_6"><mesh src="assets/cone.xml#Cone" type="triangles"/></group>
+                <group material="#m_cone" transform="#t_Cone_7"><mesh src="assets/cone.xml#Cone" type="triangles"/></group>
+                <group material="#m_cone" transform="#t_Cone_8"><mesh src="assets/cone.xml#Cone" type="triangles"/></group>
+                <group material="#m_cone" transform="#t_Cone_9"><mesh src="assets/cone.xml#Cone" type="triangles"/></group>
+                <group material="#m_cone" transform="#t_Cone_10"><mesh src="assets/cone.xml#Cone" type="triangles"/></group>
+                <group material="#m_cone" transform="#t_Cone_11"><mesh src="assets/cone.xml#Cone" type="triangles"/></group>
+                <group material="#m_cone" transform="#t_Cone_12"><mesh src="assets/cone.xml#Cone" type="triangles"/></group>
+                <group material="#m_cone" transform="#t_Cone_a"><mesh src="assets/cone.xml#Cone" type="triangles"/></group>
+                <group material="#m_cone" transform="#t_Cone_b"><mesh src="assets/cone.xml#Cone" type="triangles"/></group>
+
+                <group transform="#t_Lamp_point1">
+                    <light id="ls_point1" model="urn:xml3d:light:point">
+                        <float3 name="intensity">1500 1000 1000</float3>
+                        <bool   name="castShadow">true</bool>
+                        <float   name="shadowBias">0.0001</float>
+                    </light>
+                </group>
+
+
+                <group transform="#t_Lamp_dir">
+                    <light id="ls_dir" model="urn:xml3d:light:directional">
+                        <float3 name="direction">0.8 -0.7 0.7</float3>
+                        <float3 name="intensity">0.3 0.3 0.3</float3>
+                        <bool   name="castShadow">true</bool>
+                        <float name="shadowBias"> 0.0035 </float>
+                    </light>
+                </group>
+
+
+
+            </group>
+            <!-- -------------------------Scene Begin--------------------------- --->
+
+        </xml3d>
+
+
+        <div class="controls" >
+            <div class="option">
+                <label for="drive_switch">Drive</label>
+                <input type="checkbox" checked="false" id="drive_switch" />
+            </div>
+            <div class="option">
+                <label for="cam_switch">Camera</label>
+                <input type="checkbox" checked="true" id="cam_switch" />
+            </div>
+        </div>
+
+        <script type="text/javascript" src="behavior.js"></script>
+
+        <div class="description">
+            A simple directional light as defined <a href="https://github.com/xml3d/xml3d.js/wiki/Light-Shaders#wiki-Directional_Light">here</a>.
+        </div>
+    </div>
+</div>
+</body>
+</html>
